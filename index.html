@@ -3,64 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DMA Employee Satisfaction Survey</title>
+  <title>Employee Satisfaction Survey</title>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* General Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #4e54c8, #8f94fb);
-      color: white;
+      background-color: #001F3F; /* Dark Blue */
+      color: black;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
-    h1, h2 {
-      margin: 10px 0;
+
+    /* Survey Container */
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    select {
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
+
+    /* Logo Styling */
+    .logo {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+
+    /* Headings */
+    h1 {
+      color: #001F3F; /* Dark Blue */
+      font-weight: 600;
+    }
+
+    h2 {
+      color: #001F3F;
+      font-weight: 400;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    /* Dropdown & Button Styling */
+    select, button {
+      padding: 12px;
+      width: 100%;
       font-size: 16px;
+      font-weight: 400;
       border-radius: 5px;
-      border: none;
-      background-color: #007BFF;
-      color: white;
+      border: 2px solid #001F3F;
+      background-color: white;
+      color: black;
       cursor: pointer;
+      margin-top: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
-    select:hover {
-      background-color: #0056b3;
+
+    select:hover, button:hover {
+      background-color: #001F3F;
+      color: white;
     }
+
+    /* Button Styling */
+    button {
+      background-color: #ff9800;
+      color: white;
+      font-weight: 500;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #e68900;
+    }
+
+    /* Footer */
     footer {
       margin-top: 20px;
       font-size: 14px;
       color: lightgray;
     }
   </style>
+
   <script>
     function navigateToSurvey() {
-      const selectedOption = document.getElementById('name-selector').value;
-      if (selectedOption) {
-        window.location.href = selectedOption;
+      const department = document.getElementById('department-selector').value;
+
+      if (!department) {
+        alert("Please select a department.");
+        return;
+      }
+
+      // Define survey links for each department
+      const surveyLinks = {
+        "hr": "https://survey-link-for-hr.com",
+        "it": "https://survey-link-for-it.com",
+        "finance": "https://survey-link-for-finance.com"
+      };
+
+      // Get the right survey link
+      const selectedSurvey = surveyLinks[department];
+
+      // Redirect to survey
+      if (selectedSurvey) {
+        window.location.href = selectedSurvey;
+      } else {
+        alert("Survey link not found for this selection.");
       }
     }
   </script>
 </head>
 <body>
-  <h1>DMA Employee Satisfaction Survey</h1>
+  <div class="container">
+    <!-- Company Logo -->
+    <img src="dma.png" alt="Company Logo" class="logo">
 
-  <!-- Dropdown for selecting department or site -->
-  <div class="survey-options">
-    <h2>Select your Department or Site</h2>
-    <select id="name-selector" onchange="navigateToSurvey()">
-      <option value="" disabled selected>Select a department or site...</option>
-    </select>
+    <h1>Employee Satisfaction Survey</h1>
+
+    <!-- Dropdown for selecting department -->
+    <div class="survey-options">
+      <select id="department-selector">
+        <option value="" disabled selected>Select a department or site...</option>
+        <option value="hr">HR Department</option>
+        <option value="it">IT Department</option>
+        <option value="finance">Finance Department</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button onclick="navigateToSurvey()">Start Survey</button>
   </div>
 
   <!-- Footer -->
