@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Satisfaction Survey</title>
-  
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -42,7 +42,7 @@
 
     /* Headings */
     h1 {
-      color: #001F3F; /* Dark Blue */
+      color: #001F3F;
       font-weight: 600;
     }
 
@@ -105,15 +105,28 @@
 
       // Define survey links for each department
       const surveyLinks = {
-        "QS": "https://forms.gle/1bkDPCTKNWuXwmsT7",
-        "it": "https://survey-link-for-it.com",
-        "finance": "https://survey-link-for-finance.com"
+        "QS": "https://forms.gle/Diheo2yP5dzqL9ah6",
+        "TM": "https://forms.gle/9gKduGT1if3fMqYM8",
+        "STRU": "https://forms.gle/jmA3ZTTSbbEvWLUD7",
+        "Mil": "https://forms.gle/4ZCxePYrwvYW8aKfA",
+        "IT": "https://forms.gle/SgipSKZyjH4DR3Ek9",
+        "Inf": "https://forms.gle/ZfsTK7Z44CtGVkJe9",
+        "LS": "https://forms.gle/BaK1izeiba2vXxrJ6",
+        "BD": "https://forms.gle/fiw6KTMo3B4rVpVDA",
+        "CC": "https://forms.gle/y7Mu1TSBoCiREEQY6",
+        "ID": "https://forms.gle/wVC4ikjF74SHhk6M9",
+        "HRBP": "https://forms.gle/fL9K1CEbhUD22wNm6",
+        "DC": "https://forms.gle/yM1xrMMiZC3XzzhQ8",
+        "PER": "https://forms.gle/fAzbh7sE384S54s6A",
+        "DS": "https://forms.gle/mfzZvP6Lavr6eS9a8",
+        "WD": "https://forms.gle/Rn8D2ffRNaZza26i6",
+        "PM": "https://forms.gle/PcYJSQQp2BZ8uU778"
       };
 
-      // Get the right survey link
+      // Get the correct survey link
       const selectedSurvey = surveyLinks[department];
 
-      // Redirect to survey
+      // Redirect to survey if available
       if (selectedSurvey) {
         window.location.href = selectedSurvey;
       } else {
@@ -133,9 +146,22 @@
     <div class="survey-options">
       <select id="department-selector">
         <option value="" disabled selected>Select a department or site...</option>
-        <option value="hr">Quantitiy Survey Department</option>
-        <option value="it">IT Department</option>
-        <option value="finance">Finance Department</option>
+        <option value="QS">Quantity Survey Department</option>
+        <option value="TM">Top Management Department</option>
+        <option value="STRU">Structure Department</option>
+        <option value="Mil">Military Department</option>
+        <option value="IT">Information Technology Department</option>
+        <option value="Inf">Infrastructure Department</option>
+        <option value="LS">Landscape Department</option>
+        <option value="BD">Business Development Department</option>
+        <option value="CC">Cost Control Department</option>
+        <option value="ID">Interior Design Department</option>
+        <option value="HRBP">HRBP Department</option>
+        <option value="DC">Document Control Department</option>
+        <option value="PER">Permits Department</option>
+        <option value="DS">Design Department</option>
+        <option value="WD">Working Drawings Department</option>
+        <option value="PM">Projects Management Department</option>
       </select>
     </div>
 
