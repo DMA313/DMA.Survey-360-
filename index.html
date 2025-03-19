@@ -9,13 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* General Styling */
     body {
       font-family: 'Poppins', sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
-      background-color: #001F3F; /* Dark Blue */
+      background-color: #001F3F;
       color: black;
       min-height: 100vh;
       display: flex;
@@ -24,7 +23,6 @@
       justify-content: center;
     }
 
-    /* Survey Container */
     .container {
       background: white;
       padding: 30px;
@@ -34,31 +32,20 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    /* Logo Styling */
     .logo {
       width: 150px;
       margin-bottom: 15px;
     }
 
-    /* Headings */
     h1 {
       color: #001F3F;
       font-weight: 600;
     }
 
-    h2 {
-      color: #001F3F;
-      font-weight: 400;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    /* Dropdown & Button Styling */
     select, button {
       padding: 12px;
       width: 100%;
       font-size: 16px;
-      font-weight: 400;
       border-radius: 5px;
       border: 2px solid #001F3F;
       background-color: white;
@@ -74,7 +61,6 @@
       color: white;
     }
 
-    /* Button Styling */
     button {
       background-color: #ff9800;
       color: white;
@@ -85,49 +71,65 @@
     button:hover {
       background-color: #e68900;
     }
-
-    /* Footer */
-    footer {
-      margin-top: 20px;
-      font-size: 14px;
-      color: lightgray;
-    }
   </style>
 
   <script>
+    function showSubOptions() {
+      const department = document.getElementById('department-selector').value;
+      const subDeptContainer = document.getElementById('sub-department-container');
+      
+      if (department === 'SUP') {
+        subDeptContainer.style.display = 'block';
+      } else {
+        subDeptContainer.style.display = 'none';
+      }
+    }
+
     function navigateToSurvey() {
       const department = document.getElementById('department-selector').value;
-
-      if (!department) {
-        alert("Please select a department.");
-        return;
-      }
-
-      // Define survey links for each department
+      const subDepartment = document.getElementById('sub-department-selector')?.value;
+      
       const surveyLinks = {
-        "QS": "https://forms.gle/Diheo2yP5dzqL9ah6",
-        "TM": "https://forms.gle/9gKduGT1if3fMqYM8",
-        "STRU": "https://forms.gle/jmA3ZTTSbbEvWLUD7",
-        "Mil": "https://forms.gle/4ZCxePYrwvYW8aKfA",
-        "IT": "https://forms.gle/SgipSKZyjH4DR3Ek9",
-        "Inf": "https://forms.gle/ZfsTK7Z44CtGVkJe9",
-        "LS": "https://forms.gle/BaK1izeiba2vXxrJ6",
-        "BD": "https://forms.gle/fiw6KTMo3B4rVpVDA",
-        "CC": "https://forms.gle/y7Mu1TSBoCiREEQY6",
-        "ID": "https://forms.gle/wVC4ikjF74SHhk6M9",
-        "HRBP": "https://forms.gle/fL9K1CEbhUD22wNm6",
-        "DC": "https://forms.gle/yM1xrMMiZC3XzzhQ8",
-        "PER": "https://forms.gle/fAzbh7sE384S54s6A",
-        "DS": "https://forms.gle/mfzZvP6Lavr6eS9a8",
-        "WD": "https://forms.gle/Rn8D2ffRNaZza26i6",
-	"FIN": "https://forms.gle/wSNsY5u7gb71Dgo87",
-        "PM": "https://forms.gle/PcYJSQQp2BZ8uU778"
+        "QS": "https://forms.gle/6B2ubzzPs2hWzj42A",
+        "TM": "https://forms.gle/rsK84PSCYFHAtVcw8",
+        "STRU": "https://forms.gle/PW3dwEpxw8jG3Sky7",
+        "Mil": "https://forms.gle/5oF75ysrg4p8pYkB8",
+        "IT": "https://forms.gle/x7NGttn95pt6fo8z7",
+        "Inf": "https://forms.gle/cePv6uteZXtua1aJ6",
+        "LS": "https://forms.gle/qAZts5Sfyv5x4h629",
+        "BD": "https://forms.gle/yhyGpyaMgTZ8GnSM8",
+        "CC": "https://forms.gle/evmgyLjeJwXjTGMY9",
+        "ID": "https://forms.gle/pPJ6Eo6Yze5bo2sK6",
+        "HRBP": "https://forms.gle/MrgAakrHEzeCGvU79",
+        "DC": "https://forms.gle/ACQMVEP7DLzy9tuU9",
+        "PER": "https://forms.gle/ZLksUzmYk1kCKPveA",
+        "DS": "https://forms.gle/j3CAjmqCwFQjAACZ7",
+        "WD": "https://forms.gle/FYtsSHM7aYJpXVCM6",
+        "FIN": "https://forms.gle/qMYjEcyu9hubimbt7",
+        "PM": "https://forms.gle/JwZ4YeF4KQwx5Zoz7",
+        "SUP": {
+          "ICOCT": "https://forms.gle/7zJ5koi21dwnJhvT6",
+          "COP": "https://forms.gle/AYtpcZGzLNQ8YYiC7",
+          "OPE": "https://forms.gle/1LUqYasC3H4A9iQ36",
+          "ICNC": "https://forms.gle/ErFRkbGa9poUQYvM9",
+          "ADA": "https://forms.gle/EX9hrcipCYfPudxX8",
+	  "SHR": "https://forms.gle/HthpYLYudnv8mZ7W6",
+          "VAI": "https://forms.gle/wAwDYCH9xkeW9w2v7",
+          "SMR": "https://forms.gle/boksruHHu5YCi6K19",
+          "GOL": "https://forms.gle/UuXnLBS6BzTSDJFN6",
+          "PAR": "https://forms.gle/uBk8KcfJE2z3yLtR7",
+ 	  "LVL": "https://forms.gle/mm94Hzqx9knMfjSm9",
+          "ROY": "https://forms.gle/oJD8CmJXgF6Ex3SX6",
+          "LAN": "https://forms.gle/GonuS3dVHkQPeX5t8",
+          "MOSH": "https://forms.gle/ybe9GYeVC1GsqJcK8",
+          "PARK": "https://forms.gle/gnCh1c6BrUCdHncv6",
+
+
+        }
       };
 
-      // Get the correct survey link
-      const selectedSurvey = surveyLinks[department];
-
-      // Redirect to survey if available
+      let selectedSurvey = department === 'SUP' ? surveyLinks[department][subDepartment] : surveyLinks[department];
+      
       if (selectedSurvey) {
         window.location.href = selectedSurvey;
       } else {
@@ -138,16 +140,13 @@
 </head>
 <body>
   <div class="container">
-    <!-- Company Logo -->
     <img src="dma.png" alt="Company Logo" class="logo">
-
     <h1>Employee Satisfaction Survey</h1>
-
-    <!-- Dropdown for selecting department -->
     <div class="survey-options">
-      <select id="department-selector">
-        <option value="" disabled selected>Select a department or site...</option>
+      <select id="department-selector" onchange="showSubOptions()">
+        <option value="" disabled selected>Select a department...</option>
         <option value="QS">Quantity Survey Department</option>
+        <option value="SUP">Supervision Department</option>
         <option value="TM">Top Management Department</option>
         <option value="STRU">Structure Department</option>
         <option value="Mil">Military Department</option>
@@ -162,18 +161,32 @@
         <option value="PER">Permits Department</option>
         <option value="DS">Design Department</option>
         <option value="WD">Working Drawings Department</option>
-	<option value="FIN">Finance Department</option>
+        <option value="FIN">Finance Department</option>
         <option value="PM">Projects Management Department</option>
       </select>
     </div>
+    <div id="sub-department-container" style="display: none;">
+      <h2>Select Subdivision</h2>
+      <select id="sub-department-selector">
+        <option value="ICOCT">I-City October</option>
+        <option value="COP">Chillout Park</option>
+	<option value="OPE">October Park Extension</option>
+	<option value="ICNC">I-City N/C</option>
+	<option value="ADA">Al Adala</option>
+	<option value="SHR">Sheraton</option>
+	<option value="VAI">VAI</option>
+	<option value="SMR">Smart</option>
+	<option value="GOL">Golf</option>
+	<option value="PAR">Paros</option>
+	<option value="LVL">LVLS</option>
+	<option value="ROY">Royal Monark</option>
+	<option value="LAN">Lana</option>
+	<option value="MOSH">Al-Moshir</option>
+	<option value="PARK">Park Lane</option>
 
-    <!-- Submit Button -->
+      </select>
+    </div>
     <button onclick="navigateToSurvey()">Start Survey</button>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    &copy; Dawla 2025 - All Rights Reserved
-  </footer>
 </body>
 </html>
